@@ -177,7 +177,7 @@
 					};
 					D49921731A5612D800B38954 = {
 						CreatedOnToolsVersion = 6.1.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};

@@ -52,7 +52,7 @@ public func removeFromSessionConfiguration(_ configuration: URLSessionConfigurat
 /**
 *  A custom NSURLProtocol that automatically manages UIApplication.sharedApplication().networkActivityIndicatorVisible.
 */
-open class URLProtocol: Foundation.URLProtocol {
+open class BigBrotherURLProtocol: Foundation.URLProtocol {
     
     open var connection: NSURLConnection?
     open var mutableData: NSMutableData?
@@ -80,7 +80,7 @@ open class URLProtocol: Foundation.URLProtocol {
     }
     
     override open func startLoading() {
-        URLProtocol.manager.incrementActivityCount()
+        BigBrotherURLProtocol.manager.incrementActivityCount()
         
         let newRequest = (request as NSURLRequest).mutableCopy() as! NSMutableURLRequest
         Foundation.URLProtocol.setProperty(true, forKey: NSStringFromClass(type(of: self)), in: newRequest)
@@ -91,7 +91,7 @@ open class URLProtocol: Foundation.URLProtocol {
         connection?.cancel()
         connection = nil
         
-        URLProtocol.manager.decrementActivityCount()
+        BigBrotherURLProtocol.manager.decrementActivityCount()
     }
     
     // MARK: NSURLConnectionDelegate
